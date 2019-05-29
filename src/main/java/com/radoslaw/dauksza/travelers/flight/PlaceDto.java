@@ -9,6 +9,9 @@ public class PlaceDto {
     @JsonProperty("PlaceId")
     private long placeId;
 
+    @JsonProperty("IataCode")
+    private String iataCode;
+
     @JsonProperty("Name")
     private String name;
 
@@ -17,4 +20,13 @@ public class PlaceDto {
 
     @JsonProperty("SkyscannerCode")
     private String skyscannerCode;
+
+    @JsonProperty("CityName")
+    private String cityName;
+
+    @JsonProperty("CityId")
+    private String cityId;
+
+    @JsonProperty("CountryName")
+    private String countryName;
 }

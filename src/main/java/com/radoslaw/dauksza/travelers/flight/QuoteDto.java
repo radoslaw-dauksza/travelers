@@ -3,7 +3,7 @@ package com.radoslaw.dauksza.travelers.flight;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 public class QuoteDto {
@@ -18,8 +18,11 @@ public class QuoteDto {
     private boolean direct;
 
     @JsonProperty("OutboundLeg")
-    private OutboundLegDto outboundLeg;
+    private BoundLegDto outboundLeg;
+
+    @JsonProperty("InboundLeg")
+    private BoundLegDto inboundLeg;
 
     @JsonProperty("QuoteDateTime")
-    private LocalDate quoteDateTime;
+    private LocalDateTime quoteDateTime;
 }

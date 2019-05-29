@@ -7,10 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class SearchRouteResultDto {
-
-    @JsonProperty("Routes")
-    private List<RouteDto> routes = new ArrayList<>();
+public class BrowseQuotesResultDto {
 
     @JsonProperty("Quotes")
     private List<QuoteDto> quotes = new ArrayList<>();

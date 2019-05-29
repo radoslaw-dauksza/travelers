@@ -9,6 +9,9 @@ import java.net.URI;
 
 @Component
 class SkyscannerFlightApiClient {
+    public static final String BROWSE_ROUTES = "browseroutes";
+    public static final String BROWSE_DATES = "browsedates";
+    public static final String BROWSE_QUOTES = "browsequotes";
     private SkyscannerFlightApiConfig flightApiConfig;
     private RestTemplate restTemplate;
 
@@ -17,21 +20,41 @@ class SkyscannerFlightApiClient {
         this.restTemplate = restTemplate;
     }
 
-    SearchRouteResultDto serchRoutes(FlightParametersDto flightParameters) {
-        URI uri = getUri(flightParameters);
+    BrowseRouteResultDto browseRoutes(FlightParametersDto flightParameters) {
+        URI uri = getUri(flightParameters, BROWSE_ROUTES);
 
         try {
-            return restTemplate.getForObject(uri, SearchRouteResultDto.class);
+            return restTemplate.getForObject(uri, BrowseRouteResultDto.class);
         } catch (RestClientException e) {
-            return new SearchRouteResultDto();
+            return new BrowseRouteResultDto();
         }
     }
 
-    private URI getUri(FlightParametersDto flightParameters) {
+    BrowseQuotesResultDto browseQuotes(FlightParametersDto flightParameters) {
+        URI uri = getUri(flightParameters, BROWSE_QUOTES);
+
+        try {
+            return restTemplate.getForObject(uri, BrowseQuotesResultDto.class);
+        } catch (RestClientException e) {
+            return new BrowseQuotesResultDto();
+        }
+    }
+
+    BrowseDatesResultDto browseDates(FlightParametersDto flightParameters) {
+        URI uri = getUri(flightParameters, BROWSE_DATES);
+
+        try {
+            return restTemplate.getForObject(uri, BrowseDatesResultDto.class);
+        } catch (RestClientException e) {
+            return new BrowseDatesResultDto();
+        }
+    }
+
+    private URI getUri(FlightParametersDto flightParameters, String browse) {
 
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder
                 .fromHttpUrl(flightApiConfig.getSkyscannerFlightApiEndpoint())
-                .pathSegment("browseroutes")
+                .pathSegment(browse)
                 .pathSegment("v1.0")
                 .pathSegment(flightParameters.getCountry())
                 .pathSegment(flightParameters.getCurrency())

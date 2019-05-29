@@ -3,21 +3,21 @@ package com.radoslaw.dauksza.travelers.flight;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
-public class OutboundLegDto {
+public class BoundLegDto {
 
     @JsonProperty("CarrierIds")
-    List<Long> carrierIds;
+    private List<Long> carrierIds;
 
     @JsonProperty("OriginId")
-    long originId;
+    private long originId;
 
     @JsonProperty("DestinationId")
-    long destinationId;
+    private long destinationId;
 
     @JsonProperty("DepartureDate")
-    LocalDate departureDate;
+    private LocalDateTime departureDate;
 }

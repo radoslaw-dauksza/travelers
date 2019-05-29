@@ -13,8 +13,8 @@ public class FlightController {
     }
 
     @GetMapping("/flights")
-    public SearchRouteResultDto getFlights(@RequestBody FlightParametersDto flightParameters) {
+    public BrowseRouteResultDto getFlights(@RequestBody FlightParametersDto flightParameters) {
 
-        return client.serchRoutes(flightParameters);
+        return client.browseRoutes(flightParameters);
     }
 }
