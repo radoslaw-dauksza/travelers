@@ -1,10 +1,10 @@
-package com.radoslaw.dauksza.travelers.flight;
+package com.radoslaw.dauksza.travelers.skyscanner.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 @Getter
-public class PlaceDto {
+public class BrowsePlaceDto {
 
     @JsonProperty("PlaceId")
     private long placeId;

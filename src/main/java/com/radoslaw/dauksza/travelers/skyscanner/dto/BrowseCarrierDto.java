@@ -1,13 +1,13 @@
-package com.radoslaw.dauksza.travelers.flight;
+package com.radoslaw.dauksza.travelers.skyscanner.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 @Getter
-public class CarrierDto {
+public class BrowseCarrierDto {
 
     @JsonProperty("CarrierId")
-    private long id;
+    private long carrierId;
 
     @JsonProperty("Name")
     private String name;

@@ -1,17 +1,17 @@
-package com.radoslaw.dauksza.travelers.flight;
+package com.radoslaw.dauksza.travelers.skyscanner.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class RouteDto {
+@Getter
+public class BoundDateDto {
 
-    @JsonProperty("OriginId")
-    private long originId;
-
-    @JsonProperty("DestinationId")
-    private long destinationId;
+    @JsonProperty("PartialDate")
+    private LocalDate partialDate;
 
     @JsonProperty("QuoteIds")
     private List<Long> quoteIds;

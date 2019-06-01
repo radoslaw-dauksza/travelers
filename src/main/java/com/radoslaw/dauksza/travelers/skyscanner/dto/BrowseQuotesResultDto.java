@@ -1,4 +1,4 @@
-package com.radoslaw.dauksza.travelers.flight;
+package com.radoslaw.dauksza.travelers.skyscanner.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -13,10 +13,10 @@ public class BrowseQuotesResultDto {
     private List<QuoteDto> quotes = new ArrayList<>();
 
     @JsonProperty("Places")
-    private List<PlaceDto> places = new ArrayList<>();
+    private List<AutosuggestPlaceDto> places = new ArrayList<>();
 
     @JsonProperty("Carriers")
-    private List<CarrierDto> carriers = new ArrayList<>();
+    private List<BrowseCarrierDto> carriers = new ArrayList<>();
 
     @JsonProperty("Currencies")
     private List<CurrencyDto> currencies = new ArrayList<>();
