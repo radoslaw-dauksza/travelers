@@ -13,7 +13,7 @@ public class BrowseQuotesResultDto {
     private List<QuoteDto> quotes = new ArrayList<>();
 
     @JsonProperty("Places")
-    private List<AutosuggestPlaceDto> places = new ArrayList<>();
+    private List<BrowsePlaceDto> places = new ArrayList<>();
 
     @JsonProperty("Carriers")
     private List<BrowseCarrierDto> carriers = new ArrayList<>();

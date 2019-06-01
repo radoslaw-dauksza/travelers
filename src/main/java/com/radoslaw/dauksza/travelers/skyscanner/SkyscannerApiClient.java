@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class SkyscannerApiClient {
         }
     }
 
-    BrowseQuotesResultDto browseQuotes(SearchFlightParametersDto flightParameters) {
+    public BrowseQuotesResultDto browseQuotes(SearchFlightParametersDto flightParameters) {
         URI uri = getBrowseUri(flightParameters, BROWSE_QUOTES);
 
         try {
@@ -79,7 +80,7 @@ public class SkyscannerApiClient {
                 .pathSegment(flightParameters.getLocale())
                 .pathSegment(flightParameters.getOriginPlace())
                 .pathSegment(flightParameters.getDestinationPlace())
-                .pathSegment(flightParameters.getOutboundDate().toString());
+                .pathSegment(YearMonth.from(flightParameters.getOutboundDate()).toString());
         if (flightParameters.getInboundDate() != null) {
             uriComponentsBuilder.pathSegment(flightParameters.getInboundDate().toString());
         }

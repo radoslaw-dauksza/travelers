@@ -9,14 +9,14 @@ import java.util.List;
 @Getter
 public class BrowseRouteResultDto {
 
-    @JsonProperty("Routes")
+    @JsonProperty(value = "Routes")
     private List<RouteDto> routes = new ArrayList<>();
 
     @JsonProperty("Quotes")
     private List<QuoteDto> quotes = new ArrayList<>();
 
     @JsonProperty("Places")
-    private List<AutosuggestPlaceDto> places = new ArrayList<>();
+    private List<BrowsePlaceDto> places = new ArrayList<>();
 
     @JsonProperty("Carriers")
     private List<BrowseCarrierDto> carriers = new ArrayList<>();
