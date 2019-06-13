@@ -40,6 +40,10 @@ public class PlaceMapper {
 //    }
 
     public BrowsePlace mapToBrowsePlace(BrowsePlaceDto browsePlaceDto) {
+        String countryName;
+        if (browsePlaceDto.getType().equals("Country")) {
+            countryName = browsePlaceDto.getName();
+        } else countryName = browsePlaceDto.getCountryName();
         return new BrowsePlace(browsePlaceDto.getPlaceId(),
                 browsePlaceDto.getIataCode(),
                 browsePlaceDto.getName(),
@@ -47,7 +51,7 @@ public class PlaceMapper {
                 browsePlaceDto.getSkyscannerCode(),
                 browsePlaceDto.getCityName(),
                 browsePlaceDto.getCityId(),
-                browsePlaceDto.getCountryName());
+                countryName);
     }
 
     public List<BrowsePlace> mapToBrowsePlaces(List<BrowsePlaceDto> browsePlaceDtos) {

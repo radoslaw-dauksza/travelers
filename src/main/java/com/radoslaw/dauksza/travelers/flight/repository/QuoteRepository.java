@@ -13,10 +13,21 @@ import java.util.List;
 public interface QuoteRepository extends CrudRepository<Quote, Long> {
 
     @Query("SELECT q FROM Quote q " +
-            "WHERE q.outboundConnection.origin.placeId = :origin " +
+            "WHERE q.outboundConnection.origin.placeId = :originPlaceId " +
             "AND q.outboundConnection.departureDate BETWEEN :minDate AND :maxDate")
     List<Quote> getQuotesByOriginIdAndDepartureDateBetween(
-            @Param("origin") long placeId,
+            @Param("originPlaceId") long placeId,
+            @Param("minDate")LocalDate minDate,
+            @Param("maxDate") LocalDate maxDate);
+
+    @Query("SELECT q FROM Quote q " +
+            "WHERE q.outboundConnection.origin.countryName LIKE :countryName " +
+            "AND q.outboundConnection.departureDate BETWEEN :minDate AND :maxDate " +
+            "AND q.minPrice <= :maxMinPrice " +
+            "ORDER BY q.minPrice ASC")
+    List<Quote> getQuotesWhereOriginCountryNameLikeAndMaxMinPriceAndDepartureDateBetween(
+            @Param("countryName") String countryName,
+            @Param("maxMinPrice") double maxMinPrice,
             @Param("minDate")LocalDate minDate,
             @Param("maxDate") LocalDate maxDate);
 }

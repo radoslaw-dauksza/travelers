@@ -25,5 +25,6 @@ public class BrowsePlace {
     private String skyscannerCode;
     private String cityName;
     private String cityId;
+    @NotNull
     private String countryName;
 }

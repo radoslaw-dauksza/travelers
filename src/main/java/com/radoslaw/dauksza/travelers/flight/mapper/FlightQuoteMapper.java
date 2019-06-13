@@ -1,10 +1,11 @@
 package com.radoslaw.dauksza.travelers.flight.mapper;
 
-import com.radoslaw.dauksza.travelers.flight.DbService;
+import com.radoslaw.dauksza.travelers.flight.service.DbService;
 import com.radoslaw.dauksza.travelers.flight.domain.Connection;
 import com.radoslaw.dauksza.travelers.flight.domain.Quote;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.BrowseQuotesResultDto;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.CurrencyDto;
+import com.radoslaw.dauksza.travelers.flight.domain.dto.FlightQuoteDto;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.QuoteDto;
 import org.springframework.stereotype.Component;
 
@@ -65,7 +66,7 @@ public class FlightQuoteMapper {
                 currency);
     }
 
-    public List<FlightQuoteDto> mapToQuoteDtos(List<Quote> quotes) {
+    public List<FlightQuoteDto> mapToFlightQuoteDtos(List<Quote> quotes) {
         return quotes.stream().map(this::mapToFlightQuoteDto).collect(Collectors.toList());
     }
 

@@ -1,7 +1,7 @@
 package com.radoslaw.dauksza.travelers.flight.mapper;
 
-import com.radoslaw.dauksza.travelers.flight.ConnectionDto;
-import com.radoslaw.dauksza.travelers.flight.DbService;
+import com.radoslaw.dauksza.travelers.flight.domain.dto.ConnectionDto;
+import com.radoslaw.dauksza.travelers.flight.service.DbService;
 import com.radoslaw.dauksza.travelers.flight.domain.Carrier;
 import com.radoslaw.dauksza.travelers.flight.domain.Connection;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.BoundLegDto;

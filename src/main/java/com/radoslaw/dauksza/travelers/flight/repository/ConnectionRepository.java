@@ -12,12 +12,13 @@ import java.util.List;
 
 @Repository
 public interface ConnectionRepository extends CrudRepository<Connection, Long> {
+
     @Query("SELECT c FROM Connection c " +
-            "WHERE c.origin.placeId = :origin " +
+            "WHERE c.origin.placeId = :originId " +
             "AND c.destination.placeId = :destination " +
             "AND departureDate = :date")
     List<Connection> findByOriginPlaceIdAndDestinationPlaceIdAndDepartureDate(
-            @Param("origin") long originPlaceId,
+            @Param("originId") long originPlaceId,
             @Param("destination") long destinationPlaceId,
             @Param("date") LocalDate departureDate);
 }

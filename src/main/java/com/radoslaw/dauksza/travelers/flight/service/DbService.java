@@ -1,4 +1,4 @@
-package com.radoslaw.dauksza.travelers.flight;
+package com.radoslaw.dauksza.travelers.flight.service;
 
 import com.radoslaw.dauksza.travelers.flight.domain.BrowsePlace;
 import com.radoslaw.dauksza.travelers.flight.domain.Carrier;
@@ -11,10 +11,7 @@ import com.radoslaw.dauksza.travelers.flight.repository.QuoteRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class DbService {
@@ -113,7 +110,13 @@ public class DbService {
         return (List<BrowsePlace>) browsePlaceRepository.findAll();
     }
 
-    public List<Quote> getQuotesByOriginIdAndDepartureDateBetweene(long placeId, LocalDate minDate, LocalDate maxDate) {
+    public List<Quote> getQuotesByOriginIdAndDepartureDateBetween(long placeId, LocalDate minDate, LocalDate maxDate) {
         return quoteRepository.getQuotesByOriginIdAndDepartureDateBetween(placeId, minDate, maxDate);
+    }
+
+    public List<Quote> getQuotesByOriginCountryNameAndMaxMinPriceAndDepartureDateBetween(
+            String countryName, double maxMinPrice, LocalDate minDate, LocalDate maxDate) {
+        return quoteRepository.getQuotesWhereOriginCountryNameLikeAndMaxMinPriceAndDepartureDateBetween(
+                countryName, maxMinPrice, minDate, maxDate);
     }
 }
