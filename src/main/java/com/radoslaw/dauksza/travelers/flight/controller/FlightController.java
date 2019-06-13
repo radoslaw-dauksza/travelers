@@ -2,10 +2,7 @@ package com.radoslaw.dauksza.travelers.flight.controller;
 
 import com.radoslaw.dauksza.travelers.flight.domain.dto.FlightLivePricesResponseDto;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.FlightQuoteDto;
-import com.radoslaw.dauksza.travelers.flight.mapper.CarrierMapper;
-import com.radoslaw.dauksza.travelers.flight.mapper.ConnectionMapper;
 import com.radoslaw.dauksza.travelers.flight.mapper.FlightQuoteMapper;
-import com.radoslaw.dauksza.travelers.flight.mapper.PlaceMapper;
 import com.radoslaw.dauksza.travelers.flight.service.FlightService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +27,6 @@ public class FlightController {
 
     @GetMapping("/flights")
     public List<FlightQuoteDto> getSuggestedFlightsQuotes() {
-        flightService.updateFlightQuotesFromPoland(LocalDate.now());
         return flightQuoteMapper.mapToFlightQuoteDtos(flightService.getSuggestedQuotesFromPoland());
     }
 
