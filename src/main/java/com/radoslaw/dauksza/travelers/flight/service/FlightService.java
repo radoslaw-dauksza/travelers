@@ -2,6 +2,7 @@ package com.radoslaw.dauksza.travelers.flight.service;
 
 import com.radoslaw.dauksza.travelers.flight.domain.Connection;
 import com.radoslaw.dauksza.travelers.flight.domain.Quote;
+import com.radoslaw.dauksza.travelers.flight.domain.dto.AutosuggestPlaceDto;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.BrowseQuotesResultDto;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.QuoteDto;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.SearchFlightParametersDto;
@@ -77,5 +78,9 @@ public class FlightService {
     public List<Quote> getSuggestedQuotesFromPoland() {
         return dbService.getQuotesByOriginCountryNameAndMaxMinPriceAndDepartureDateBetween(
                 "Polska", 100, LocalDate.now(), LocalDate.now().plusDays(12));
+    }
+
+    public List<AutosuggestPlaceDto> getPlaces(String query) {
+        return client.autosuggest(query);
     }
 }

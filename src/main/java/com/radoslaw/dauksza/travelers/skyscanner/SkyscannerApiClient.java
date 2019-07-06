@@ -1,9 +1,10 @@
 package com.radoslaw.dauksza.travelers.skyscanner;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.*;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import kong.unirest.HttpResponse;
+import kong.unirest.JsonNode;
+import kong.unirest.Unirest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -13,6 +14,7 @@ import java.net.URI;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class SkyscannerApiClient {
@@ -22,10 +24,12 @@ public class SkyscannerApiClient {
     public static final String AUTOSUGGEST = "autosuggest";
     private SkyscannerApiConfig flightApiConfig;
     private RestTemplate restTemplate;
+    private ObjectMapper objectMapper;
 
-    public SkyscannerApiClient(SkyscannerApiConfig flightApiConfig, RestTemplate restTemplate) {
+    public SkyscannerApiClient(SkyscannerApiConfig flightApiConfig, RestTemplate restTemplate, ObjectMapper objectMapper) {
         this.flightApiConfig = flightApiConfig;
         this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
     }
 
     public BrowseRouteResultDto browseRoutes(SearchFlightParametersDto flightParameters) {
@@ -61,30 +65,19 @@ public class SkyscannerApiClient {
     public List<AutosuggestPlaceDto> autosuggest(String query) {
         URI uri = getAutosuggestUri(query, AUTOSUGGEST);
 
-        try {
+        HttpResponse<JsonNode> response = Unirest.get(uri.toString())
+                .header("X-RapidAPI-Host", flightApiConfig.getSkyscannerFlightApiEndpoint())
+                .header("X-RapidAPI-Key", flightApiConfig.getSkyscannerFlightApiKey())
+                .asJson();
+        System.out.println(response.getBody().getArray().toString());
 
-            ResponseEntity<List<AutosuggestPlaceDto>> response = restTemplate.exchange(uri,
-                    HttpMethod.GET,
-                    null,
-                    new ParameterizedTypeReference<List<AutosuggestPlaceDto>>() {
-                    });
-            List<AutosuggestPlaceDto> l = response.getBody();
-            System.out.println(l);
-            return l;
-        } catch (RestClientException e) {
-            System.out.println(e);
-            List<AutosuggestPlaceDto> a = new ArrayList<>();
-
-            AutosuggestPlaceDto s = new AutosuggestPlaceDto();
-            s.setCityId("WAW-sky");
-            s.setCountryId("PL-sky");
-            s.setCountryName("Polska");
-            s.setPlaceName("Warszawa Chopina");
-            s.setPlaceId("WARS-sky");
-            s.setRegionId("");
-            a.add(s);
-            return a;
-        }
+        return response.getBody()
+                .getObject()
+                .getJSONArray("Places")
+                .toList()
+                .stream()
+                .map(o -> objectMapper.convertValue(o, AutosuggestPlaceDto.class))
+                .collect(Collectors.toList());
     }
 
     private URI getBrowseUri(SearchFlightParametersDto flightParameters, String action) {
