@@ -2,16 +2,19 @@ package com.radoslaw.dauksza.travelers.hotel.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;
 
+@Getter
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResultDto {
 
     @JsonProperty("accommodation_type")
-    private int acomodationType;
+    private int accommodationType;
 
     @JsonProperty("location_score")
     private double locationScore;
@@ -23,7 +26,7 @@ public class ResultDto {
     private String businessReviewScoreWord;
 
     @JsonProperty("address")
-    private String adress;
+    private String address;
 
     @JsonProperty("hotel_id")
     private long hotelId;
@@ -50,7 +53,7 @@ public class ResultDto {
     private boolean isFreeCancellable;
 
     @JsonProperty("checkout")
-    private HoursDto checkout;
+    private HoursDto checkOut;
 
     @JsonProperty("address_trans")
     private String translatedAddress;
@@ -68,7 +71,7 @@ public class ResultDto {
     private URI url;
 
     @JsonProperty("district_id")
-    private long ditrictId;
+    private long districtId;
 
     @JsonProperty("booking_home")
     private BookingHomeDto bookingHomeDto;
@@ -98,10 +101,10 @@ public class ResultDto {
     private String hotelName;
 
     @JsonProperty("accommodation_type_name")
-    private String AcomodationTypeName;
+    private String AccommodationTypeName;
 
     @JsonProperty("cleanliness_score_reviews_nr")
-    private int cleanlinesScoreReviewsNr;
+    private int cleanlinessScoreReviewsNr;
 
     @JsonProperty("is_city_center")
     private boolean isCityCenter;
@@ -113,7 +116,7 @@ public class ResultDto {
     private String cityName;
 
     @JsonProperty("business_review_nr")
-    private int businesReviewNr;
+    private int businessReviewNr;
 
     @JsonProperty("facilities_review_score")
     private FacilitiesReviewScoreDto facilitiesReviewScoreDto;
@@ -140,7 +143,7 @@ public class ResultDto {
     private String reviewScoreWord;
 
     @JsonProperty("hotel_include_breakfast")
-    private boolean hotelIncludeBrekfast;
+    private boolean hotelIncludeBreakfast;
 
     @JsonProperty("extended")
     private boolean extended;
@@ -149,7 +152,7 @@ public class ResultDto {
     private String currencyCode;
 
     @JsonProperty("business_review_score")
-    private double businesReviewScore;
+    private double businessReviewScore;
 
     @JsonProperty("city_name_en")
     private String cityNameEn;
@@ -164,7 +167,7 @@ public class ResultDto {
     private int locationScoreReviewsNr;
 
     @JsonProperty("checkin")
-    private HoursDto checkin;
+    private HoursDto checkIn;
 
     @JsonProperty("review_score")
     private double reviewScore;
@@ -173,8 +176,11 @@ public class ResultDto {
     private boolean ccRequired;
 
     @JsonProperty("min_total_price")
-    private BigDecimal minTotalPrice;
+    private double minTotalPrice;
 
     @JsonProperty("city_trans")
-    private String CityTrans;
+    private String cityTrans;
+
+    @JsonProperty("zip")
+    private String zip;
 }
