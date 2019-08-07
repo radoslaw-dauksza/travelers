@@ -31,11 +31,7 @@ public class HotelSearchParameters {
                                  double longitude, double latitude, String orderBy) {
 
         this.searchType = searchType;
-        if (offset < 0) {
-            this.offset = 0;
-        } else {
-            this.offset = offset;
-        }
+        this.offset = Math.max(offset, 0);
         this.destinationIdOrUfi = destinationIdOrUfi;
         if (guestQty <= 0) {
             this.guestQty = 1;

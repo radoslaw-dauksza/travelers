@@ -101,7 +101,7 @@ public class ResultDto {
     private String hotelName;
 
     @JsonProperty("accommodation_type_name")
-    private String AccommodationTypeName;
+    private String accommodationTypeName;
 
     @JsonProperty("cleanliness_score_reviews_nr")
     private int cleanlinessScoreReviewsNr;
@@ -137,16 +137,16 @@ public class ResultDto {
     private String hotelNameTrans;
 
     @JsonProperty("is_no_prepayment_block")
-    private boolean IsNoPrepaymentBlock;
+    private boolean isNoPrepaymentBlock;
 
     @JsonProperty("review_score_word")
     private String reviewScoreWord;
 
     @JsonProperty("hotel_include_breakfast")
-    private boolean hotelIncludeBreakfast;
+    private boolean isHotelIncludeBreakfast;
 
     @JsonProperty("extended")
-    private boolean extended;
+    private boolean isExtended;
 
     @JsonProperty("currency_code")
     private String currencyCode;
