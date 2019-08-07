@@ -2,7 +2,7 @@ package com.radoslaw.dauksza.travelers.flight.mapper;
 
 import com.radoslaw.dauksza.travelers.flight.domain.BrowsePlace;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.BrowsePlaceDto;
-import com.radoslaw.dauksza.travelers.skyscanner.SkyscannerApiClient;
+import com.radoslaw.dauksza.travelers.flight.skyscanner.SkyscannerApiClient;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

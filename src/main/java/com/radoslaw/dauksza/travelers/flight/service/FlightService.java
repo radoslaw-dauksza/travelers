@@ -10,9 +10,8 @@ import com.radoslaw.dauksza.travelers.flight.mapper.CarrierMapper;
 import com.radoslaw.dauksza.travelers.flight.mapper.ConnectionMapper;
 import com.radoslaw.dauksza.travelers.flight.mapper.FlightQuoteMapper;
 import com.radoslaw.dauksza.travelers.flight.mapper.PlaceMapper;
-import com.radoslaw.dauksza.travelers.skyscanner.SkyscannerApiClient;
+import com.radoslaw.dauksza.travelers.flight.skyscanner.SkyscannerApiClient;
 import org.springframework.stereotype.Service;
-import sun.util.locale.LanguageTag;
 
 import java.time.LocalDate;
 import java.util.*;

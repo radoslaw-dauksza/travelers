@@ -1,4 +1,4 @@
-package com.radoslaw.dauksza.travelers.skyscanner;
+package com.radoslaw.dauksza.travelers.flight.skyscanner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.*;
@@ -12,7 +12,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.time.YearMonth;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,6 +1,6 @@
 package com.radoslaw.dauksza.travelers.flight.controller;
 
-import com.radoslaw.dauksza.travelers.skyscanner.SkyscannerApiClient;
+import com.radoslaw.dauksza.travelers.flight.skyscanner.SkyscannerApiClient;
 import com.radoslaw.dauksza.travelers.flight.domain.dto.AutosuggestPlaceDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

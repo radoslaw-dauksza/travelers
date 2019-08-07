@@ -1,4 +1,4 @@
-package com.radoslaw.dauksza.travelers.skyscanner;
+package com.radoslaw.dauksza.travelers.flight.skyscanner;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
