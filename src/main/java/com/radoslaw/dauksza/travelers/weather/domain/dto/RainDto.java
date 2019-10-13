@@ -8,11 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class CoordDto {
-
-    @JsonProperty("lon")
-    private double lon;
-
-    @JsonProperty("lat")
-    private double lat;
+public class RainDto {
+    @JsonProperty("3h")
+    private double volumeInLast3H;
 }
